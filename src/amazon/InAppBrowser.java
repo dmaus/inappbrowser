@@ -626,12 +626,6 @@ public class InAppBrowser extends CordovaPlugin {
                 settings.setBuiltInZoomControls(getShowZoomControls());
                 settings.setPluginState(com.amazon.android.webkit.AmazonWebSettings.PluginState.ON);
 
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                    settings.setAllowUniversalAccessFromFileURLs(true);
-                }
-
-
-
                 //Toggle whether this is enabled or not!
                 Bundle appSettings = cordova.getActivity().getIntent().getExtras();
                 boolean enableDatabase = appSettings == null ? true : appSettings.getBoolean("InAppBrowserStorageEnabled", true);
