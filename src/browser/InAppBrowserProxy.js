@@ -83,6 +83,7 @@ var IAB = {
                 browserWrap.style.height = "100%";
                 browserWrap.style.borderStyle = "solid";
                 browserWrap.style.borderColor = "rgba(0,0,0,0.25)";
+                browserWrap.style.overflow = "hidden";
 
                 browserWrap.onclick = function () {
                     setTimeout(function () {
