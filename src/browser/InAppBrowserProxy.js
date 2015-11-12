@@ -78,9 +78,9 @@ var IAB = {
             if (!browserWrap) {
                 browserWrap = document.createElement("div");
                 browserWrap.style.position = "absolute";
-                browserWrap.style.borderWidth = "40px";
-                browserWrap.style.width = "calc(100% - 80px)";
-                browserWrap.style.height = "calc(100% - 80px)";
+                browserWrap.style.borderWidth = "0px";
+                browserWrap.style.width = "100%";
+                browserWrap.style.height = "100%";
                 browserWrap.style.borderStyle = "solid";
                 browserWrap.style.borderColor = "rgba(0,0,0,0.25)";
 
@@ -104,7 +104,7 @@ var IAB = {
             browserWrap.appendChild(popup);
 
             if (features.indexOf("location=yes") !== -1 || features.indexOf("location") === -1) {
-                popup.style.height = "calc(100% - 60px)";
+                popup.style.height = "100%";
 
                 navigationButtonsDiv = document.createElement("div");
                 navigationButtonsDiv.style.height = "60px";
