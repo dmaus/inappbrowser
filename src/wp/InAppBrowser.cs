@@ -57,6 +57,7 @@ namespace WPCordovaClassLib.Cordova.Commands
 
         protected bool ShowLocation {get;set;}
         protected bool StartHidden  {get;set;}
+        protected bool ShowToolbar  {get;set;}
 
         protected string NavigationCallbackId { get; set; }
 
@@ -65,6 +66,7 @@ namespace WPCordovaClassLib.Cordova.Commands
             // reset defaults on ShowLocation + StartHidden features 
             ShowLocation = true;
             StartHidden = false;
+            ShowToolbar = false;
 
             string[] args = JSON.JsonHelper.Deserialize<string[]>(options);
             //BrowserOptions opts = JSON.JsonHelper.Deserialize<BrowserOptions>(options);
@@ -88,6 +90,9 @@ namespace WPCordovaClassLib.Cordova.Commands
                                 break;
                             case "hidden":
                                 StartHidden = split[1].StartsWith("yes", StringComparison.OrdinalIgnoreCase);
+                                break;
+                            case "toolbar":
+                                ShowToolbar = split[1].StartsWith("yes", StringComparison.OrdinalIgnoreCase);
                                 break;
                         }
                     }
@@ -126,7 +131,11 @@ namespace WPCordovaClassLib.Cordova.Commands
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
                 {
                     browser.Visibility = Visibility.Visible;
-                    AppBar.IsVisible = true;
+                    if(ShowToolbar){
+                       AppBar.IsVisible = true; 
+                    }else{
+                       AppBar.IsVisible = false;
+                    }
                 });
             }
         }
@@ -345,7 +354,12 @@ namespace WPCordovaClassLib.Cordova.Commands
                             bar.Buttons.Add(closeBtn);
 
                             page.ApplicationBar = bar;
-                            bar.IsVisible = !StartHidden;
+                            if(ShowToolbar){
+                               bar.IsVisible = true; 
+                            }else{
+                               bar.IsVisible = false;
+                            }
+                            
                             AppBar = bar;
 
                             page.BackKeyPress += page_BackKeyPress;
