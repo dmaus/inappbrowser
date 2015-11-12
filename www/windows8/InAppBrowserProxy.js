@@ -57,11 +57,12 @@ var IAB = {
             if (!browserWrap) {
                 browserWrap = document.createElement("div");
                 browserWrap.style.position = "absolute";
-                browserWrap.style.width = (window.innerWidth - 80) + "px";
-                browserWrap.style.height = (window.innerHeight - 80) + "px";
-                browserWrap.style.borderWidth = "40px";
+                browserWrap.style.width = (window.innerWidth) + "px";
+                browserWrap.style.height = (window.innerHeight) + "px";
+                browserWrap.style.borderWidth = "0px";
                 browserWrap.style.borderStyle = "solid";
                 browserWrap.style.borderColor = "rgba(0,0,0,0.25)";
+                browserWrap.style.overflow = "hidden";
 
                 browserWrap.onclick = function () {
                     setTimeout(function () {
@@ -73,16 +74,16 @@ var IAB = {
             }
 
             elem = document.createElement("iframe");
-            elem.style.width = (window.innerWidth - 80) + "px";
-            elem.style.height = (window.innerHeight - 80) + "px";
+            elem.style.width = (window.innerWidth) + "px";
+            elem.style.height = (window.innerHeight) + "px";
             elem.style.borderWidth = "0px";
             elem.name = "targetFrame";
             elem.src = strUrl;
 
             window.addEventListener("resize", function () {
                 if (browserWrap && elem) {
-                    elem.style.width = (window.innerWidth - 80) + "px";
-                    elem.style.height = (window.innerHeight - 80) + "px";
+                    elem.style.width = (window.innerWidth) + "px";
+                    elem.style.height = (window.innerHeight) + "px";
                 }
             });
 

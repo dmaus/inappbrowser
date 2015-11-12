@@ -156,7 +156,7 @@ var IAB = {
             browserWrap.appendChild(popup);
 
             if (features.indexOf("location=yes") !== -1 || features.indexOf("location") === -1) {
-                popup.style.height = "calc(100% - 60px)";
+                popup.style.height = "100%";
 
                 navigationButtonsDiv = document.createElement("div");
                 navigationButtonsDiv.style.height = "60px";
